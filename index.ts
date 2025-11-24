@@ -1,13 +1,20 @@
 import {
-  type Route as RouteType,
+  DatabaseType
   type Component as ComponentType,
   ViewType,
+  TableReturn,
 } from "vulpine-lib";
 
-export const Route: RouteType = "supabase";
+export const database: DatabaseType = "supabase";
 
 export const Component: ComponentType = {
   type: ViewType.Table,
-  onLoad: () => {},
+  onLoad: (db) => {
+    const data: TableReturn = [
+      ["id", "name"],
+      ["1", "Alice", "2", "Bob"],
+    ];
+    return data;
+  },
   onDestroy: async () => {},
 };
