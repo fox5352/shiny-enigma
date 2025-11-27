@@ -1,13 +1,13 @@
 import {
-  DatabaseType
+  DatabaseType,
   type Component as ComponentType,
   ViewType,
   TableReturn,
 } from "vulpine-lib";
 
-export const database: DatabaseType = "supabase";
+const database: DatabaseType = "supabase";
 
-export const Component: ComponentType = {
+const Component: ComponentType = {
   type: ViewType.Table,
   onLoad: async (db): Promise<TableReturn> => {
     const data: TableReturn = [
@@ -18,3 +18,6 @@ export const Component: ComponentType = {
   },
   onDestroy: async () => {},
 };
+
+// Export as default
+export default { Component, database };
