@@ -9,7 +9,7 @@ export const database: DatabaseType = "supabase";
 
 export const Component: ComponentType = {
   type: ViewType.Table,
-  onLoad: (db) => {
+  onLoad: async (db): Promise<TableReturn> => {
     const data: TableReturn = [
       ["id", "name"],
       ["1", "Alice", "2", "Bob"],
