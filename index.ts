@@ -13,7 +13,10 @@ const Component: ComponentType = {
   onLoad: async (db): Promise<LoadReturn> => {
     const data: TableReturn = [
       ["id", "name"],
-      ["1", "Alice", "2", "Bob"],
+      [
+        ["1", "Alice"],
+        ["2", "Bob"],
+      ],
     ];
     return {
       kind: "table",
