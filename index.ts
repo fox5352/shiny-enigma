@@ -10,20 +10,41 @@ import { type SupabaseClient } from "@supabase/supabase-js";
 
 const database: DatabaseType = "supabase";
 
+type Product = {
+  id: number;
+  created_at: string;
+  ref: number;
+  name: string;
+  description: string;
+  amount: number;
+  price: number;
+};
+
 const Component: ComponentType = {
   type: ViewType.Table,
   onLoad: async (db: SupabaseClient): Promise<LoadReturn> => {
     const { data, error } = await db.from("products").select("*");
 
-    console.log(data);
+    if (error) throw error;
+
+    const tableData =
+      data.map((product: Product) => [
+        product.id,
+        product.created_at,
+        product.ref,
+        product.name,
+        product.description,
+        product.amount,
+        product.price,
+      ]) || [];
+
+    console.log(tableData);
 
     const table: TableReturn = [
-      ["id", "name"],
-      [
-        ["1", "Alice"],
-        ["2", "Bob"],
-      ],
+      ["id", "created_at", "ref", "name", "description", "amount", "price"],
+      [],
     ];
+
     return {
       kind: "table",
       value: table,
