@@ -29,20 +29,20 @@ const Component: ComponentType = {
 
     const tableData =
       data.map((product: Product) => [
-        product.id,
-        product.created_at,
-        product.ref,
-        product.name,
-        product.description,
-        product.amount,
-        product.price,
+        `${product.id}`,
+        `${product.created_at}`,
+        `${product.ref}`,
+        `${product.name}`,
+        `${product.description}`,
+        `${product.amount}`,
+        `${product.price}`,
       ]) || [];
 
     console.log(tableData);
 
     const table: TableReturn = [
       ["id", "created_at", "ref", "name", "description", "amount", "price"],
-      [],
+      tableData,
     ];
 
     return {
