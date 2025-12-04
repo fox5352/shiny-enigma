@@ -45,6 +45,9 @@ const Component: ComponentType = {
       tableData,
     ];
 
+    console.log("Table");
+    console.log(table);
+
     return {
       kind: "table",
       value: table,
