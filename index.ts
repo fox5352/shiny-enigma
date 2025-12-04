@@ -6,12 +6,18 @@ import {
   LoadReturn,
 } from "vulpine-lib";
 
+import { type SupabaseClient } from "@supabase/supabase-js";
+
 const database: DatabaseType = "supabase";
 
 const Component: ComponentType = {
   type: ViewType.Table,
-  onLoad: async (db): Promise<LoadReturn> => {
-    const data: TableReturn = [
+  onLoad: async (db: SupabaseClient): Promise<LoadReturn> => {
+    const { data, error } = await db.from("products").select("*");
+
+    console.log(data);
+
+    const table: TableReturn = [
       ["id", "name"],
       [
         ["1", "Alice"],
@@ -20,7 +26,7 @@ const Component: ComponentType = {
     ];
     return {
       kind: "table",
-      value: data,
+      value: table,
     };
   },
   onDestroy: async () => {},

@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/fox5352/shiny-enigma#readme",
   "dependencies": {
+    "@supabase/supabase-js": "^2.86.0",
+    "supabase": "^2.63.1",
     "vulpine-lib": "file:../vulpine-lib"
   }
 }
